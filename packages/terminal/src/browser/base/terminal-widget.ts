@@ -25,6 +25,11 @@ export abstract class TerminalWidget extends BaseWidget {
 
     abstract processId: Promise<number>;
 
+    /** Terminal kind that indicates whether a terminal is created by a user or by some extension for a user */
+    abstract readonly kind: 'user' | string;
+
+    abstract readonly terminalId: number;
+
     /**
      * Start terminal and return terminal id.
      * @param id - terminal id.
@@ -45,19 +50,27 @@ export abstract class TerminalWidget extends BaseWidget {
 
     abstract scrollToTop(): void;
 
+    abstract scrollToBottom(): void;
+
     abstract scrollPageUp(): void;
 
     abstract scrollPageDown(): void;
 
+    abstract resetTerminal(): void;
     /**
      * Event which fires when terminal did closed. Event value contains closed terminal widget definition.
      */
     abstract onTerminalDidClose: Event<TerminalWidget>;
 
+    /** Event which fires when the terminal widget connects to the terminal process */
+    abstract onTerminalDidConnectProcess: Event<TerminalWidget>;
+
     /**
      * Cleat terminal output.
      */
     abstract clearOutput(): void;
+
+    abstract writeLine(line: string): void;
 
     /**
      * Return Terminal search box widget.
@@ -67,6 +80,8 @@ export abstract class TerminalWidget extends BaseWidget {
      * Whether the terminal process has child processes.
      */
     abstract hasChildProcesses(): Promise<boolean>;
+
+    abstract setTitle(title: string): void;
 }
 
 /**
@@ -121,4 +136,9 @@ export interface TerminalWidgetOptions {
      * Terminal attributes. Can be useful to apply some implementation specific information.
      */
     readonly attributes?: { [key: string]: string | null };
+
+    /**
+     * Terminal kind that indicates whether a terminal is created by a user or by some extension for a user
+     */
+    readonly kind?: 'user' | string;
 }
