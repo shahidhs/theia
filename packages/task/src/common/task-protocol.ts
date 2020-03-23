@@ -230,6 +230,7 @@ export interface WatchingMatcherContribution {
 }
 
 export interface ProblemMatcherContribution {
+    base?: string;
     name?: string;
     label: string;
     deprecated?: boolean;
