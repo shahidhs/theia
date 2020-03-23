@@ -10,6 +10,23 @@
 
 </div>
 
+## README
+
+This package contains the generators used when creating a Theia application through `@theia/cli`.
+
+This package can auto-generate application code for both the backend and frontend, as well as webpack configuration files.
+
+When targeting Electron, the `electron-main.js` script will spawn the backend process in a Node.js sub-process, where Electron's API won't be available.
+To prevent the generated application from forking the backend, you can pass a `--no-cluster` flag, or set an environment variable like `THEIA_ELECTRON_NO_BACKEND_FORK=1`.
+
+```sh
+# when developing a Theia application with @theia/cli:
+yarn theia start --no-cluster
+
+# when starting a bundled application made using @theia/cli:
+bundled-application.exe --no-cluster
+```
+
 ## Additional Information
 
 - [Theia - GitHub](https://github.com/eclipse-theia/theia)
