@@ -27,7 +27,7 @@ export const HostedPluginsManager = Symbol('HostedPluginsManager');
 export interface HostedPluginsManager {
 
     /**
-     * Runs watcher script to recomple plugin on any changes along given path.
+     * Runs watcher script to recompile plugin on any changes along given path.
      *
      * @param uri uri to plugin root folder.
      */
@@ -41,7 +41,7 @@ export interface HostedPluginsManager {
     stopWatchCompilation(uri: string): Promise<void>;
 
     /**
-     * Chacks if watcher script to recomple plugin is running.
+     * Checks if watcher script to recompile plugin is running.
      *
      * @param uri uri to plugin root folder.
      */
