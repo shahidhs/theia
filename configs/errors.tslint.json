@@ -54,7 +54,6 @@
           "@phosphor/widgets",
           "chai",
           "chai-string",
-          "electron",
           "express",
           "fs-extra",
           "inversify",
